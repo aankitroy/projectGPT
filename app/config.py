@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     MONGO_DB_URL = os.environ['MONGO_DB_URL']
     DATABASE_NAME = os.environ['DATABASE_NAME']
     MAX_POOL_SIZE = os.environ['MAX_POOL_SIZE']
+    OPEN_AI_API_KEY = os.environ["OPEN_AI_API_KEY"]
     
 settings = Settings()
 

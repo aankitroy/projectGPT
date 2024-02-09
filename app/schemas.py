@@ -36,3 +36,11 @@ class UserOut(BaseModel):
 
 class User(UserOut):
     password: str
+    
+    
+    
+class Assistant(BaseModel):
+    id: str
+    name: str
+    description: str
+    version: str
