@@ -25,4 +25,4 @@ def read_item(item_id: int, q: str = None):
     return {"item_id": item_id, "q": q}
 
 app.include_router(user_router, prefix="/api/v1")
-app.include_router(assistant_router, prefix="/api/v1")
+app.include_router(assistant_router, prefix="/api/v1/assistant")

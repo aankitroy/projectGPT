@@ -54,3 +54,9 @@ class Assistant(BaseModel):
     name: str
     object: str
     tools: List[Tool]
+    
+class GenerateResponseInput(BaseModel):
+    assistant_id: str
+    message_body: str
+    thread_id: str
+    
