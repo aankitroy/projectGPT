@@ -7,12 +7,12 @@ from app.utils import create_access_token, create_refresh_token, get_hashed_pass
 from uuid import uuid4
 from app.deps import get_current_user
 from motor.motor_asyncio import AsyncIOMotorCollection
-from app.helperAI import get_assistant_by_id
+from app import helperAI
 assistant_router = APIRouter()
 
-@assistant_router.get("/assistant/get/{assistant_id}", response_model=Assistant)
-async def get_assistant(assistant_id: str):
-    assistant = get_assistant_by_id(assistant_id)
+@assistant_router.get("/assistant/get/{assistant_id}",response_model=Assistant)
+async def get_assistant(assistant_id: str, user: User = Depends(get_current_user)):
+    assistant = helperAI.get_assistant_by_id(assistant_id)
     if assistant is None:
         raise HTTPException(status_code=404, detail="Assistant not found")
-    return {**assistant, "id": assistant_id}
+    return assistant

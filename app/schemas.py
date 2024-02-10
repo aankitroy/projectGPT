@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Any, Dict, List
 from uuid import UUID
 from pydantic import BaseModel, Field
 from fastapi import Body
@@ -38,9 +39,18 @@ class User(UserOut):
     password: str
     
     
-    
+class Tool(BaseModel):
+    type: str
+
+
 class Assistant(BaseModel):
     id: str
+    created_at: int
+    description: Any
+    file_ids: List
+    instructions: str
+    metadata: Dict[str, Any]
+    model: str
     name: str
-    description: str
-    version: str
+    object: str
+    tools: List[Tool]

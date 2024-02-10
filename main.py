@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from app.api_v1.user import user_router
 from app.api_v1.assistant import assistant_router
 from app.database import close_mongo_connection, connect_to_mongo
+from openai import OpenAI
+
 
 app = FastAPI()
 
@@ -9,7 +11,6 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup_db_client():
     connect_to_mongo()
-    
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
