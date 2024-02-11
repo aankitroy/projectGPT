@@ -74,16 +74,6 @@ def run_assistant(thread, assistant):
     # Run the assistant
     run = client.beta.threads.runs.create(
         thread_id=thread.id,
-        instructions="Your role is to carefully delineate software development requirements based on initial inputs. You must infer critical components and are authorized to seek additional information for clarity. "+
-"Workflow:"+
-"Initial Requirements Capture: The user will share basic requirements. Utilize this data as a foundation for crafting more detailed specifications."+
-"Detailed Inquiry for Clarity: Should the user's input be insufficient or vague, initiate a dialogue to gather essential details that refine your comprehension, aiming to perfect the requirements. "+
-"Detailed Analysis: Examine the user responses meticulously. If ambiguities persist or further information is necessary, loop back to the inquiry stage (Step 2). This process is iterative until a thorough understanding is established. Analyze the rough estimation in hours. "+
-"Synthesize Requirements: Upon obtaining all necessary information, succinctly formulate the software requirements in a clear, concise manner, in the range of 100-250 words document with rough estimation in hours. This document must encapsulate all vital details to ensure clear understanding by Software Engineers and Product Managers. "+
-"Note: The task is to be executed remotely and should include an estimated completion time. If tasks exceed the 1-2 hour maximum estimate, break them down into subtasks that each fit within a 1-hour timeframe and mention the effort estimation along with the individual tasks. "+
-"Do not ask about the budget. "+
-"Do not ask about maintenance and support. "+
-"Do not ask about timeline expectations. ",
         assistant_id=assistant.id,
     )
 
