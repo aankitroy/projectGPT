@@ -6,6 +6,7 @@ class Database:
     client: AsyncIOMotorClient = None
 
 db = Database()
+main_db = Database()
 
 def connect_to_mongo():
     db.client = AsyncIOMotorClient(settings.MONGO_DB_URL,maxPoolSize=settings.MAX_POOL_SIZE)

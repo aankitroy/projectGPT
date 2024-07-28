@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "projectgpt"
+name = "1hourdev"
 version = "0.1.0"
 description = ""
 authors = ["Aankit Roy"]
@@ -24,8 +24,8 @@ motor = "3.3.2"
 passlib = "1.7.4"
 pyasn1 = "0.5.1"
 pycparser = "2.21"
-pydantic = "1.10.11"
-pydantic-core = "2.14.6"
+pydantic = "2.7.1"
+pydantic-core = "2.18.2"
 pyjwt = "2.8.0"
 pymongo = "4.6.1"
 python-dotenv = "0.21.1"
@@ -38,7 +38,13 @@ starlette = "0.27.0"
 typing-extensions = "4.7.1"
 uvicorn = "0.22.0"
 zipp = "3.15.0"
-openai = "1.12.0"
+openai = "1.16.1"
+fastapi-mail = "^1.4.1"
+pydantic-settings = "^2.2.1"
+boto3 = "^1.34.100"
+reportlab = "^4.2.0"
+requests = "^2.32.3"
+httpx = "^0.27.0"
 
 
 [build-system]

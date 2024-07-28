@@ -5,42 +5,34 @@ from pydantic import BaseModel, Field
 from fastapi import Body
 
 class TokenSchema(BaseModel):
+    email: str
+    name: str
     access_token: str
     refresh_token: str
     
     
 class TokenPayload(BaseModel):
-    sub: str = None
-    exp: int = None
+    email: str = None
+    iat: int = None
 
 
 class UserAuth(BaseModel):
     email: str = Field(..., description="user email")
+    name: str =Field(..., description="user name")
     password: str = Field(..., min_length=5, max_length=24, description="user password")
-    phone: str = Field(..., description="user phone number")
-    type: str = Field(..., description="user type")
-    two_factor: str = Field(..., description="user two factor authentication")
-    registrationDate: datetime = Field(..., description="user registration date")
-    approved: bool = Field(..., description="user approved status")
-    version: int = Field(..., description="user version")
     
 
 class UserOut(BaseModel):
-    id: UUID
+    _id: str
     email: str
-    registrationDate: datetime
-    phone: str  # add this line
-    type: str  # add this line
-    two_factor: str  # add this line
-    approved: bool  # add this line
-    version: int  # add this line
+    name: str
 
 class User(UserOut):
     password: str
     
     
 class Tool(BaseModel):
-    type: str
+    pass
 
 
 class Assistant(BaseModel):
@@ -56,7 +48,45 @@ class Assistant(BaseModel):
     tools: List[Tool]
     
 class GenerateResponseInput(BaseModel):
-    assistant_id: str
     message_body: str
+    conv_id: str
+
+class Conversation(BaseModel):
+    title: str
+    created_at: datetime
+    updated_at: datetime
     thread_id: str
-    
+    assistant_id: str
+    conv_id: UUID
+    user_id: str
+    status: str
+    emailsend: bool = False
+
+class Message(BaseModel):
+    text: str
+    type: str
+class ConvMessages(BaseModel):
+    content: List[Message]
+    role: str
+    created_at: datetime
+
+class ProjectRequirements(BaseModel):
+    requirements: str = None
+    client_id: str = None
+    conv_id:str = None
+
+class Developer():
+    name: str | None
+    email: str | None
+    phone: str | None
+    location: str | None
+    socialUrl: datetime | None
+    experience: List[str] | None
+    designation: str | None
+    languages: List[str] | None
+    education: List[str] | None
+    yearsOfExperience: int | None
+    price: int | None   
+    status: str | None
+    registerDate: datetime | None
+
